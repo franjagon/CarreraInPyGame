@@ -60,5 +60,5 @@ class Runner():
 
 if __name__ == "__main__":
     pygame.init()
-    miJuegodeCarreras = GameMove()
-    miJuegodeCarreras.start()
+    moverBicho = GameMove()
+    moverBicho.start()
