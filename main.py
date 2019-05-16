@@ -64,11 +64,11 @@ class GameRace():
                    Y si es así daremos el mensaje del ganador (en el título de la ventana) y activaremos la condición de final de partida.
                    Y forzaremos la salida del bucle para que ningún otro corredor pueda ya llegar a la meta.'''
                 if runner.position[0] >= self.__finish:
-                    pygame.display.set_caption("La Carrera Infernal de los Bichejos " + " ...and the WINNER is ... {}".format(runner.name.upper()))
+                    pygame.display.set_caption("La Carrera Infernal de los Bichejos " + "  ...and the WINNER is ...  {}".format(runner.name.upper()))
                     gameOver = True
                     break
             
-            '''(3)  Redibujamos todos los objetos. Lo primero la imagen de fondo de la ventana. Y después (iterándolos) cada uno de los corredores.'''
+            '''(3)  Redibujamos todos los objetos. Lo primero la imagen de fondo de la ventana. Y después (iterándolos) cada uno de los corredores  (en sus posiciones actualizadas).'''
             self.__screen.blit(self.background, (0, 0))
             for runner in self.__runners:
                 self.__screen.blit(runner.custome, runner.position)
@@ -94,7 +94,7 @@ class Runner():
     '''Este método contendrá la codificación para hacer que el corredor corra (avance por la pantalla horizontalmente).
        Para ello incrementará la coordenada X de su posición con un número generado de forma aleatoria.'''
     def run(self):
-        self.position[0] += random.randint(1, 6)
+        self.position[0] += random.randint(1, 3)
 
 '''Nuestra ejecución como programa principal iniciará el framework de PYGAME, instanciará un objeto carrera e invocará su metodo partida para que se lance dicha carrera.'''
 if __name__ == "__main__":
