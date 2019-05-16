@@ -1,5 +1,18 @@
 '''Importamos las librerías -random-, para poder invocar valores aleatorios, -sys-, para poder invocar la salida de la interfaz y -pygame-.'''
 import random, sys, pygame
+                    
+'''Esta clase será el objeto corredor. La anteponemos a la clase principal para que el intérprete de python la tenga en cuenta cuando la clase principal la invoque.'''        
+class Runner():
+    '''El método constructor recibirá obligatoriamente los valores para establecer una posición inicial para el corredor y opcionalmente un disfraz y un nombre.'''
+    def __init__(self, x = 0, y = 0, custome = "turtle", name = ""):
+        self.custome = pygame.image.load("images/{}.png".format(custome))
+        self.position = [x, y]
+        self.name = name
+        
+    '''Este método contendrá la codificación para hacer que el corredor corra (avance por la pantalla horizontalmente).
+       Para ello incrementará la coordenada X de su posición con un número generado de forma aleatoria.'''
+    def run(self):
+        self.position[0] += random.randint(1, 3)
 
 '''Nuestra clase principal (objeto) será la carrera propiamente dicha.'''
 class GameRace():
@@ -82,19 +95,6 @@ class GameRace():
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.__close()
-                    
-'''Esta clase será el objeto corredor.'''        
-class Runner():
-    '''El método constructor recibirá obligatoriamente los valores para establecer una posición inicial para el corredor y opcionalmente un disfraz y un nombre.'''
-    def __init__(self, x = 0, y = 0, custome = "turtle", name = ""):
-        self.custome = pygame.image.load("images/{}.png".format(custome))
-        self.position = [x, y]
-        self.name = name
-        
-    '''Este método contendrá la codificación para hacer que el corredor corra (avance por la pantalla horizontalmente).
-       Para ello incrementará la coordenada X de su posición con un número generado de forma aleatoria.'''
-    def run(self):
-        self.position[0] += random.randint(1, 3)
 
 '''Nuestra ejecución como programa principal iniciará el framework de PYGAME, instanciará un objeto carrera e invocará su metodo partida para que se lance dicha carrera.'''
 if __name__ == "__main__":
