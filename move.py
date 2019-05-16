@@ -19,8 +19,9 @@ class GameMove():
             
     def start(self):
         gameOver = False
-        while not gameOver:
-            
+        click = pygame.mouse.get_pressed()
+        
+        while not gameOver:            
             '''Comprobamos eventos'''
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -34,14 +35,9 @@ class GameMove():
                         self.__theRunner.position[0] -= random.randint(10, 50)
                     if event.key == pygame.K_RIGHT:
                         self.__theRunner.position[0] += random.randint(10, 50)
-#                    else:
-#                        m1, m2, m3 = pygame.mouse.get_pressed()
-#                        if m1 == 1 or m2 == 1:
-#                            self.__theRunner.position[0] += random.randint(0, 50)
-#                            self.__theRunner.position[1] += random.randint(0, 50)
-#                        if m3 == 1:
-#                            self.__theRunner.position[0] += random.randint(-50, 0)
-#                            self.__theRunner.position[1] += random.randint(-50, 0)
+                elif event.type == MOUSEBUTTONDOWN:
+                    self.__theRunner.position[0] += random.randint(-50, 50)
+                    self.__theRunner.position[1] += random.randint(-50, 50)
                         
             '''Repintamos todos los objetos'''
             self.background = pygame.image.load("images/background.png")
